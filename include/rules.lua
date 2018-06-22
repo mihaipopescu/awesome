@@ -36,7 +36,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_LEFT].tags[tags[screens.SCREEN_LEFT].TAG_TERMINAL]
+            screen = screens.SCREEN_LEFT,
+            tag = tags[screens.SCREEN_LEFT].settings[tags[screens.SCREEN_LEFT].TAG_TERMINAL].name
         }
     },
     {
@@ -46,7 +47,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_LEFT].tags[tags[screens.SCREEN_LEFT].TAG_SUBLIME]
+            screen = screens.SCREEN_LEFT,
+            tag = tags[screens.SCREEN_LEFT].settings[tags[screens.SCREEN_LEFT].TAG_SUBLIME].name
         }
     },
     {
@@ -56,7 +58,19 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_VSCODE]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_VSCODE].name
+        }
+    },
+    {
+        rule =
+        {
+            class = "[Rr]ider"
+        },
+        properties =
+        {
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_VSCODE].name
         }
     },
     {
@@ -66,7 +80,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_DEV]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_DEV].name
         }
     },
     {
@@ -76,7 +91,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_DEV]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_DEV].name
         }
     },
     {
@@ -86,7 +102,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_DEV]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_DEV].name
         }
     },
     {
@@ -97,7 +114,8 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_UNITY]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_UNITY].name
         }
     },
     {
@@ -108,7 +126,8 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_UNITY]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_UNITY].name
         }
     },
     {
@@ -119,7 +138,8 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_UNITY]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_UNITY].name
         }
     },
     {
@@ -129,7 +149,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_CENTRE].tags[tags[screens.SCREEN_CENTRE].TAG_EXTRA]
+            screen = screens.SCREEN_CENTRE,
+            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_EXTRA].name
         }
     },
     {
@@ -139,7 +160,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_RIGHT].tags[tags[screens.SCREEN_RIGHT].TAG_WEB_UNITY]
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_WEB_UNITY].name
         }
     },
     {
@@ -149,7 +171,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_RIGHT].tags[tags[screens.SCREEN_RIGHT].TAG_SLACK]
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_SLACK].name
         }
     },
     {
@@ -159,7 +182,8 @@ awful.rules.rules =
         },
         properties =
         {
-            tag = tags[screens.SCREEN_RIGHT].tags[tags[screens.SCREEN_RIGHT].TAG_SKYPE]
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_SKYPE].name
         }
     },
     {
@@ -170,7 +194,7 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].tags[tags[screens.SCREEN_RIGHT].TAG_MUSIC]
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_MUSIC].name
         }
     },
     {
@@ -181,7 +205,8 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            tag = tags[screens.SCREEN_RIGHT].tags[tags[screens.SCREEN_RIGHT].TAG_EXTRA]
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_EXTRA].name
         }
     }
 }

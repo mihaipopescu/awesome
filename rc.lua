@@ -23,6 +23,10 @@ layouts         = require("include/layouts")
 screens         = require("include/screens")
 -- }}}
 
+-- {{{ Tags
+tags            = require("include/tags")
+-- }}}
+
 -- {{{ Notifications
                   require("include/notifications")
 -- }}}
@@ -33,10 +37,6 @@ screens         = require("include/screens")
 
 -- {{{ Variables
                   require("include/variables")
--- }}}
-
--- {{{ Tags
-tags            = require("include/tags")
 -- }}}
 
 -- {{{ Menu
