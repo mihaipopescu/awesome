@@ -75,6 +75,9 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
+-- Calendar
+calendar({}):attach(mytextclock)
+
 local function screen_connect(s)
     -- Wallpaper
     set_wallpaper(s)

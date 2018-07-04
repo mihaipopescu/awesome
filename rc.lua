@@ -4,6 +4,7 @@ awful           = require("awful")
 hotkeys_popup   = require("awful.hotkeys_popup").widget
                   require("awful.hotkeys_popup.keys")
 beautiful       = require("beautiful")
+calendar        = require("calendar")
 freedesktop     = require("freedesktop")
 gears           = require("gears")
 lain            = require("lain")
