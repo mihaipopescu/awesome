@@ -78,6 +78,20 @@ mytextclock = wibox.widget.textclock()
 -- Calendar
 calendar({}):attach(mytextclock)
 
+-- CPU
+widget_display = wibox.widget.imagebox(beautiful.widget_display)
+widget_display_r = wibox.widget.imagebox(beautiful.widget_display_r)
+widget_display_l = wibox.widget.imagebox(beautiful.widget_display_l)
+widget_display_c = wibox.widget.imagebox(beautiful.widget_display_c)
+local cpu_icon = wibox.widget.imagebox(beautiful.widget_cpu)
+local cpu = lain.widget.cpu({
+    settings = function()
+        widget:set_markup("CPU: " .. cpu_now.usage .. "%" .. " ")
+    end
+})
+local cpu_widget = wibox.container.background(cpu.widget)
+cpu_widget.bgimage=beautiful.widget_display
+
 local function screen_connect(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -102,7 +116,7 @@ local function screen_connect(s)
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 22, bg = beautiful.panel, fg = beautiful.fg_normal })
 
 -- if s == screens.SCREEN_CENTRE then right_layout:add(wibox.widget.systray()) end
 
@@ -124,6 +138,9 @@ local function screen_connect(s)
             spacer,
             wibox.widget.systray(),
             spacer,
+            widget_display_l,
+            cpu_widget,
+            widget_display_r,
             mytextclock,
             spacer,
             s.mylayoutbox,

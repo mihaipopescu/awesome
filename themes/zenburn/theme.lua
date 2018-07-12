@@ -10,6 +10,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 -- {{{ Main
 local theme = {}
 theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
+theme.panel     = "png:" .. themes_path .. "zenburn/panel/panel.png"
 -- }}}
 
 -- {{{ Styles
@@ -57,6 +58,10 @@ theme.titlebar_bg_normal = "#3F3F3F"
 --theme.fg_end_widget    = "#FF5656"
 --theme.bg_widget        = "#494B4F"
 --theme.border_widget    = "#3F3F3F"
+theme.widget_display   = themes_path .. "zenburn/panel/widgets/display/widget_display.png"
+theme.widget_display_r = themes_path .. "zenburn/panel/widgets/display/widget_display_r.png"
+theme.widget_display_c = themes_path .. "zenburn/panel/widgets/display/widget_display_c.png"
+theme.widget_display_l = themes_path .. "zenburn/panel/widgets/display/widget_display_l.png"
 -- }}}
 
 -- {{{ Mouse finder
