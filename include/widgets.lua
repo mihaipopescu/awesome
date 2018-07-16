@@ -158,14 +158,8 @@ local mem = lain.widget.mem({
 local mem_widget = wibox.container.background(mem.widget)
 mem_widget.bgimage=beautiful.widget_display
 
-local function screen_connect(s)
-    -- Wallpaper
-    set_wallpaper(s)
-
-    -- Tags
-    set_tags(s, tags)
-
-    -- Create a promptbox for each screen
+function set_widgets(s)
+    -- Create a promptbox
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
@@ -183,8 +177,6 @@ local function screen_connect(s)
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, height = 22, bg = beautiful.panel, fg = beautiful.fg_normal })
-
--- if s == screens.SCREEN_CENTRE then right_layout:add(wibox.widget.systray()) end
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -241,9 +233,4 @@ local function screen_connect(s)
         },
     }
 end
-
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
-
-awful.screen.connect_for_each_screen(function(s) screen_connect(s) end)
 -- }}}
