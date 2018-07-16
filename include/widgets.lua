@@ -159,26 +159,50 @@ local mem_widget = wibox.container.background(mem.widget)
 mem_widget.bgimage=beautiful.widget_display
 
 function set_widgets(s)
-    -- Create a promptbox
-    s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
+    -- Prompt box
+    s.mypromptbox = 
+        awful.widget.prompt({
+            prompt = " Execute: "
+        })
+
+    -- Layout box
     s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox:buttons(gears.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-    -- Create a taglist widget
+    s.mylayoutbox:buttons(
+        gears.table.join(
+            awful.button(
+                { }, 
+                1, 
+                function () awful.layout.inc( 1) end
+            ),
+
+            awful.button(
+                { }, 
+                3, 
+                function () awful.layout.inc(-1) end
+            ),
+
+            awful.button(
+                { }, 
+                4, 
+                function () awful.layout.inc( 1) end
+            ),
+
+            awful.button(
+                { },
+                5, 
+                function () awful.layout.inc(-1) end
+            )
+        )
+    )
+
+    -- Tag list
     s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
-    -- Create a tasklist widget
+    -- Task list
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
-    -- Create the wibox
+    -- Wibox
     s.mywibox = awful.wibar({ position = "top", screen = s, height = 22, bg = beautiful.panel, fg = beautiful.fg_normal })
-
-    -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         {
