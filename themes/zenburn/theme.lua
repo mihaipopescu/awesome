@@ -9,8 +9,8 @@ local dpi = require("beautiful.xresources").apply_dpi
 
 -- {{{ Main
 local theme = {}
-theme.wallpaper = themes_path .. "zenburn/zenburn-background.png"
 theme.panel     = "png:" .. themes_path .. "zenburn/panel/panel.png"
+theme.wallpaper = themes_path .. "zenburn/wallpapers/pro-medium-dark.png"
 -- }}}
 
 -- {{{ Styles
@@ -34,6 +34,14 @@ theme.border_focus  = "#6F6F6F"
 theme.border_marked = "#CC9393"
 -- }}}
 
+-- {{{ Separators
+
+theme.spr    = themes_path .. "zenburn/panel/separators/spr.png"
+theme.sprtr  = themes_path .. "zenburn/panel/separators/sprtr.png"
+theme.spr4px = themes_path .. "zenburn/panel/separators/spr4px.png"
+theme.spr5px = themes_path .. "zenburn/panel/separators/spr5px.png"
+-- }}}
+
 -- {{{ Titlebars
 theme.titlebar_bg_focus  = "#3F3F3F"
 theme.titlebar_bg_normal = "#3F3F3F"
@@ -49,6 +57,22 @@ theme.titlebar_bg_normal = "#3F3F3F"
 --theme.taglist_bg_focus = "#CC9393"
 -- }}}
 
+-- {{{ Tasklist |
+theme.tasklist_font                 = "sans 8"
+theme.tasklist_disable_icon         = true
+theme.tasklist_bg_normal            = "png:" .. themes_path .. "zenburn/panel/tasklist/normal.png"
+theme.tasklist_bg_focus             = "png:" .. themes_path .. "zenburn/panel/tasklist/focus.png"
+theme.tasklist_bg_urgent            = "png:" .. themes_path .. "zenburn/panel/tasklist/urgent.png"
+theme.tasklist_fg_focus             = "#DDDDDD"
+theme.tasklist_fg_urgent            = "#EEEEEE"
+theme.tasklist_fg_normal            = "#AAAAAA"
+theme.tasklist_floating             = ""
+theme.tasklist_sticky               = ""
+theme.tasklist_ontop                = ""
+theme.tasklist_maximized_horizontal = ""
+theme.tasklist_maximized_vertical   = ""
+-- }}}
+
 -- {{{ Widgets
 -- You can add as many variables as
 -- you wish and access them by using
@@ -58,10 +82,14 @@ theme.titlebar_bg_normal = "#3F3F3F"
 --theme.fg_end_widget    = "#FF5656"
 --theme.bg_widget        = "#494B4F"
 --theme.border_widget    = "#3F3F3F"
-theme.widget_display   = themes_path .. "zenburn/panel/widgets/display/widget_display.png"
-theme.widget_display_r = themes_path .. "zenburn/panel/widgets/display/widget_display_r.png"
-theme.widget_display_c = themes_path .. "zenburn/panel/widgets/display/widget_display_c.png"
-theme.widget_display_l = themes_path .. "zenburn/panel/widgets/display/widget_display_l.png"
+theme.widget_cal            = themes_path .. "zenburn/panel/widgets/widget_cal.png"
+theme.widget_clock          = themes_path .. "zenburn/panel/widgets/widget_clock.png"
+theme.widget_cpu            = themes_path .. "zenburn/panel/widgets/widget_cpu.png"
+theme.widget_display        = themes_path .. "zenburn/panel/widgets/display/widget_display.png"
+theme.widget_display_center = themes_path .. "zenburn/panel/widgets/display/widget_display_c.png"
+theme.widget_display_left   = themes_path .. "zenburn/panel/widgets/display/widget_display_l.png"
+theme.widget_display_right  = themes_path .. "zenburn/panel/widgets/display/widget_display_r.png"
+theme.widget_mem            = themes_path .. "zenburn/panel/widgets/widget_mem.png"
 -- }}}
 
 -- {{{ Mouse finder
@@ -86,7 +114,7 @@ theme.taglist_squares_unsel = themes_path .. "zenburn/taglist/squarez.png"
 
 -- {{{ Misc
 theme.awesome_icon           = themes_path .. "zenburn/awesome-icon.png"
-theme.menu_submenu_icon      = themes_path .. "default/submenu.png"
+theme.menu_submenu_icon      = themes_path .. "zenburn/submenu.png"
 -- }}}
 
 -- {{{ Layout
@@ -119,8 +147,8 @@ theme.layout_centerworkh    = themes_lain_path .. "icons/layout/zenburn/centerwo
 theme.titlebar_close_button_focus  = themes_path .. "zenburn/titlebar/close_focus.png"
 theme.titlebar_close_button_normal = themes_path .. "zenburn/titlebar/close_normal.png"
 
-theme.titlebar_minimize_button_normal = themes_path .. "default/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus  = themes_path .. "default/titlebar/minimize_focus.png"
+theme.titlebar_minimize_button_normal = themes_path .. "zenburn/titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus  = themes_path .. "zenburn/titlebar/minimize_focus.png"
 
 theme.titlebar_ontop_button_focus_active  = themes_path .. "zenburn/titlebar/ontop_focus_active.png"
 theme.titlebar_ontop_button_normal_active = themes_path .. "zenburn/titlebar/ontop_normal_active.png"

@@ -7,7 +7,7 @@ root.buttons(gears.table.join(
 -- }}}
 
 -- {{{ Key bindings definitions
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
     awful.key(
         { modkey, "Shift" },
         "/",
