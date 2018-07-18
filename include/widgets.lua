@@ -158,6 +158,34 @@ local mem = lain.widget.mem({
 local mem_widget = wibox.container.background(mem.widget)
 mem_widget.bgimage=beautiful.widget_display
 
+-- Ssd widget
+local ssd_icon = wibox.widget.imagebox(beautiful.widget_ssd)
+local ssd = lain.widget.fs({
+    settings = function()
+        widget:set_markup(string.format(" %d%% [%3.2f %s] ", fs_now["/home"].percentage, fs_now["/home"].free, fs_now["/home"].units))
+    end
+})
+local ssd_widget = wibox.container.background(ssd.widget)
+ssd_widget.bgimage=beautiful.widget_display
+
+-- Network widget
+local netdl_icon = wibox.widget.imagebox(beautiful.widget_netdl)
+local netup_icon = wibox.widget.imagebox(beautiful.widget_netul)
+local netdl = wibox.widget.textbox()
+local netup = wibox.widget.textbox()
+local net = lain.widget.net({
+    iface = "enp2s0",
+    units = 1024^2,
+    settings = function()
+        netdl:set_markup(string.format(" %.1f Mb ", net_now.received))
+        netup:set_markup(string.format(" %.1f Mb ", net_now.sent))
+    end
+})
+local netdl_widget = wibox.container.background(netdl)
+netdl_widget.bgimage=beautiful.widget_display
+local netup_widget = wibox.container.background(netup)
+netup_widget.bgimage=beautiful.widget_display
+
 function set_widgets(s)
     -- Prompt box
     s.mypromptbox = 
@@ -244,6 +272,22 @@ function set_widgets(s)
             mem_widget,
             widget_display_right,
             spr5px,
+            -- Ssd widget
+            spr,
+            ssd_icon,
+            widget_display_left,
+            ssd_widget,
+            widget_display_right,
+            spr5px,
+            -- Network
+            spr,
+            netdl_icon,
+            widget_display_left,
+            netdl_widget,
+            widget_display_center,
+            netup_widget,
+            widget_display_right,
+            netup_icon,
             -- Clock
             spr,
             clock_icon,
