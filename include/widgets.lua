@@ -162,7 +162,7 @@ mem_widget.bgimage=beautiful.widget_display
 local ssd_icon = wibox.widget.imagebox(beautiful.widget_ssd)
 local ssd = lain.widget.fs({
     settings = function()
-        widget:set_markup(string.format(" %d%% [%3.2f %s] ", fs_now["/home"].percentage, fs_now["/home"].free, fs_now["/home"].units))
+        widget:set_markup(string.format(" %d%% ", fs_now["/home"].percentage))
     end
 })
 local ssd_widget = wibox.container.background(ssd.widget)

@@ -61,5 +61,5 @@ menu            = require("include/menu")
 -- }}}
 
 -- {{{ Autostart
-                  --require("include/autostart")
+                  require("include/autostart")
 -- }}}
