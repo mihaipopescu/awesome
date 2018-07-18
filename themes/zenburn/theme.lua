@@ -74,6 +74,16 @@ theme.tasklist_maximized_horizontal = ""
 theme.tasklist_maximized_vertical   = ""
 -- }}}
 
+-- {{{ Music
+theme.mpd_prev                      = themes_path .. "zenburn/panel/widgets/mpd/mpd_prev.png"
+theme.mpd_nex                       = themes_path .. "zenburn/panel/widgets/mpd/mpd_next.png"
+theme.mpd_stop                      = themes_path .. "zenburn/panel/widgets/mpd/mpd_stop.png"
+theme.mpd_pause                     = themes_path .. "zenburn/panel/widgets/mpd/mpd_pause.png"
+theme.mpd_play                      = themes_path .. "zenburn/panel/widgets/mpd/mpd_play.png"
+theme.mpd_sepr                      = themes_path .. "zenburn/panel/widgets/mpd/mpd_sepr.png"
+theme.mpd_sepl                      = themes_path .. "zenburn/panel/widgets/mpd/mpd_sepl.png"
+-- }}}
+
 -- {{{ Widgets
 -- You can add as many variables as
 -- you wish and access them by using

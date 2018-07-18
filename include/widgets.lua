@@ -186,6 +186,63 @@ netdl_widget.bgimage=beautiful.widget_display
 local netup_widget = wibox.container.background(netup)
 netup_widget.bgimage=beautiful.widget_display
 
+-- Music
+local prev_icon = wibox.widget.imagebox(beautiful.mpd_prev)
+local next_icon = wibox.widget.imagebox(beautiful.mpd_nex)
+local stop_icon = wibox.widget.imagebox(beautiful.mpd_stop)
+local pause_icon = wibox.widget.imagebox(beautiful.mpd_pause)
+local play_pause_icon = wibox.widget.imagebox(beautiful.mpd_play)
+local mpd_sepl = wibox.widget.imagebox(beautiful.mpd_sepl)
+local mpd_sepr = wibox.widget.imagebox(beautiful.mpd_sepr)
+
+prev_icon:buttons(
+    gears.table.join(
+        awful.button(
+            { }, 
+            1, 
+            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end
+        )
+    )
+)
+
+next_icon:buttons(
+    gears.table.join(
+        awful.button(
+            { }, 
+            1, 
+            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end
+        )
+    )
+)
+
+stop_icon:buttons(
+    gears.table.join(
+        awful.button(
+            { }, 
+            1, 
+            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") end
+        )
+    )
+)
+
+play_pause_icon:buttons(
+    gears.table.join(
+        awful.button(
+            { }, 
+            1, 
+            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end
+        )
+    )
+)
+
+play_pause_icon:connect_signal(
+    "button::press", 
+    function(x, y, button, mods, find_widgets_result)
+        -- play_pause_icon.image = beautiful.mpd_pause
+    end
+)
+
+
 function set_widgets(s)
     -- Prompt box
     s.mypromptbox = 
@@ -238,9 +295,26 @@ function set_widgets(s)
             layout = wibox.layout.fixed.horizontal,
             -- Menu
             menu,
-            -- Tag list
+            -- Separator
             spr,
+            spr4px,
+            spr,
+            -- Tag list
             s.mytaglist,
+            -- Separator
+            spr,
+            spr4px,
+            spr,
+            -- Music
+            prev_icon,
+            spr,
+            stop_icon,
+            spr,
+            play_pause_icon,
+            spr,
+            next_icon,
+            spr,
+            spr4px,
         },
         {
             -- Middle widget
