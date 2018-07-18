@@ -11,14 +11,14 @@ quake = lain.util.quake(
 -- Tag list buttons
 local taglist_buttons = gears.table.join(
     awful.button(
-        { }, 
-        1, 
+        { },
+        1,
         function(t) t:view_only() end
     ),
 
     awful.button(
-        { modkey }, 
-        1, 
+        { modkey },
+        1,
         function(t)
             if client.focus then
                 client.focus:move_to_tag(t)
@@ -27,14 +27,14 @@ local taglist_buttons = gears.table.join(
     ),
 
     awful.button(
-        { }, 
-        3, 
+        { },
+        3,
         awful.tag.viewtoggle
     ),
 
     awful.button(
-        { modkey }, 
-        3, 
+        { modkey },
+        3,
         function(t)
             if client.focus then
                 client.focus:toggle_tag(t)
@@ -43,16 +43,16 @@ local taglist_buttons = gears.table.join(
     ),
 
     awful.button(
-        { }, 
-        4, 
-        function(t) 
-            awful.tag.viewnext(t.screen) 
+        { },
+        4,
+        function(t)
+            awful.tag.viewnext(t.screen)
         end
     ),
 
     awful.button(
-        { }, 
-        5, 
+        { },
+        5,
         function(t) awful.tag.viewprev(t.screen) end
     )
 )
@@ -60,8 +60,8 @@ local taglist_buttons = gears.table.join(
 -- Task list buttons
 local tasklist_buttons = gears.table.join(
     awful.button(
-        { }, 
-        1, 
+        { },
+        1,
         function (c)
             if c == client.focus then
                 c.minimized = true
@@ -81,8 +81,8 @@ local tasklist_buttons = gears.table.join(
     ),
 
     awful.button(
-        { }, 
-        3, 
+        { },
+        3,
         function ()
             local instance = nil
             return function ()
@@ -95,18 +95,18 @@ local tasklist_buttons = gears.table.join(
             end
         end
     ),
-    
+
     awful.button(
-        { }, 
-        4, 
+        { },
+        4,
         function ()
             awful.client.focus.byidx(1)
         end
     ),
 
     awful.button(
-        { }, 
-        5, 
+        { },
+        5,
         function ()
             awful.client.focus.byidx(-1)
         end
@@ -139,7 +139,7 @@ calendar({}):attach(text_clock)
 -- Cpu widget
 local cpu_icon = wibox.widget.imagebox(beautiful.widget_cpu)
 local cpu = lain.widget.cpu({
-    settings = 
+    settings =
         function()
             widget:set_markup(" " .. cpu_now.usage .. "%" .. " ")
         end
@@ -150,7 +150,7 @@ cpu_widget.bgimage=beautiful.widget_display
 -- Memory widget
 local mem_icon = wibox.widget.imagebox(beautiful.widget_mem)
 local mem = lain.widget.mem({
-    settings = 
+    settings =
         function()
             widget:set_markup(" " .. mem_now.perc .. "%" .. " ")
         end
@@ -187,65 +187,29 @@ local netup_widget = wibox.container.background(netup)
 netup_widget.bgimage=beautiful.widget_display
 
 -- Music
-local prev_icon = wibox.widget.imagebox(beautiful.mpd_prev)
 local next_icon = wibox.widget.imagebox(beautiful.mpd_nex)
-local stop_icon = wibox.widget.imagebox(beautiful.mpd_stop)
 local pause_icon = wibox.widget.imagebox(beautiful.mpd_pause)
-local play_pause_icon = wibox.widget.imagebox(beautiful.mpd_play)
-local mpd_sepl = wibox.widget.imagebox(beautiful.mpd_sepl)
-local mpd_sepr = wibox.widget.imagebox(beautiful.mpd_sepr)
+local play_icon = wibox.widget.imagebox(beautiful.mpd_play)
+local prev_icon = wibox.widget.imagebox(beautiful.mpd_prev)
+local stop_icon = wibox.widget.imagebox(beautiful.mpd_stop)
 
-prev_icon:buttons(
-    gears.table.join(
-        awful.button(
-            { }, 
-            1, 
-            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end
-        )
-    )
-)
+next_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_next())))
+pause_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_pause())))
+play_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_play())))
+prev_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_previous())))
+stop_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_stop())))
 
-next_icon:buttons(
-    gears.table.join(
-        awful.button(
-            { }, 
-            1, 
-            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end
-        )
-    )
-)
-
-stop_icon:buttons(
-    gears.table.join(
-        awful.button(
-            { }, 
-            1, 
-            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop") end
-        )
-    )
-)
-
-play_pause_icon:buttons(
-    gears.table.join(
-        awful.button(
-            { }, 
-            1, 
-            function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end
-        )
-    )
-)
-
-play_pause_icon:connect_signal(
-    "button::press", 
+play_icon:connect_signal(
+    "button::press",
     function(x, y, button, mods, find_widgets_result)
-        -- play_pause_icon.image = beautiful.mpd_pause
+        -- play_icon.image = beautiful.mpd_pause
     end
 )
 
 
 function set_widgets(s)
     -- Prompt box
-    s.mypromptbox = 
+    s.mypromptbox =
         awful.widget.prompt({
             prompt = " Execute: "
         })
@@ -255,26 +219,26 @@ function set_widgets(s)
     s.mylayoutbox:buttons(
         gears.table.join(
             awful.button(
-                { }, 
-                1, 
-                function () awful.layout.inc( 1) end
-            ),
-
-            awful.button(
-                { }, 
-                3, 
-                function () awful.layout.inc(-1) end
-            ),
-
-            awful.button(
-                { }, 
-                4, 
+                { },
+                1,
                 function () awful.layout.inc( 1) end
             ),
 
             awful.button(
                 { },
-                5, 
+                3,
+                function () awful.layout.inc(-1) end
+            ),
+
+            awful.button(
+                { },
+                4,
+                function () awful.layout.inc( 1) end
+            ),
+
+            awful.button(
+                { },
+                5,
                 function () awful.layout.inc(-1) end
             )
         )
@@ -308,9 +272,11 @@ function set_widgets(s)
             -- Music
             prev_icon,
             spr,
-            stop_icon,
+            play_icon,
             spr,
-            play_pause_icon,
+            pause_icon,
+            spr,
+            stop_icon,
             spr,
             next_icon,
             spr,

@@ -245,19 +245,19 @@ local globalkeys = gears.table.join(
     awful.key(
         { modkey },
         "s",
-        function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause") end,
+        spotify_play_pause(),
         { description = "play / pause music", group = "awesome" }
     ),
     awful.key(
         { modkey },
         "d",
-        function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next") end,
+        spotify_next(),
         { description = "next song", group = "awesome" }
     ),
     awful.key(
         { modkey },
         "a",
-        function () awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous") end,
+        spotify_previous(),
         { description = "previous song", group = "awesome" }
     ),
 

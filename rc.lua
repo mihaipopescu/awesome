@@ -44,6 +44,10 @@ tags            = require("include/tags")
 menu            = require("include/menu")
 -- }}}
 
+-- {{{ Music
+                = require("include/music")
+-- }}}
+
 -- {{{ Widgets
                   require("include/widgets")
 -- }}}
