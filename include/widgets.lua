@@ -188,24 +188,48 @@ netup_widget.bgimage=beautiful.widget_display
 
 -- Music
 local next_icon = wibox.widget.imagebox(beautiful.mpd_nex)
-local pause_icon = wibox.widget.imagebox(beautiful.mpd_pause)
-local play_icon = wibox.widget.imagebox(beautiful.mpd_play)
+local play_pause_icon = wibox.widget.imagebox(beautiful.mpd_play)
 local prev_icon = wibox.widget.imagebox(beautiful.mpd_prev)
 local stop_icon = wibox.widget.imagebox(beautiful.mpd_stop)
+local spotify_text = wibox.widget.textbox()
+local spotify_widget = wibox.container.background(spotify_text)
+spotify_widget.bgimage=beautiful.widget_display
 
-next_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_next())))
-pause_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_pause())))
-play_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_play())))
-prev_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_previous())))
-stop_icon:buttons(gears.table.join(awful.button({ }, 1, spotify_stop())))
+next_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify_next() end)))
+play_pause_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify_play_pause() end)))
+prev_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify_previous() end)))
+stop_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify_stop() end)))
 
-play_icon:connect_signal(
+local function update_play_pause_icon(widget, stdout, _, _, _)
+    stdout = string.gsub(stdout, "\n", "")
+    if (stdout == "Playing") then
+        widget.image = beautiful.mpd_pause
+    else
+        widget.image = beautiful.mpd_play
+    end
+end
+
+local function update_spotify_text(widget, stdout, _, _, _)
+    if string.find(stdout, "Error: Spotify is not running.") ~= nil then
+        widget:set_markup("<span foreground=" .. "'"..beautiful.fg_urgent .. "'" .. ">Spotify</span>")
+    else
+        widget:set_markup("<span foreground=" .. "'"..beautiful.fg_focus .. "'" .. ">" .. stdout .. "</span>")
+    end
+end
+
+play_pause_icon:connect_signal(
     "button::press",
     function(x, y, button, mods, find_widgets_result)
-        -- play_icon.image = beautiful.mpd_pause
+        awful.spawn.easy_async("sp status", 
+            function(stdout, stderr, exitreason, exitcode)
+                update_play_pause_icon(play_pause_icon, stdout, stderr, exitreason, exitcode)
+            end
+        )
     end
 )
 
+watch("sp current-oneline", 1, update_spotify_text, spotify_text)
+watch("sp status", 1, update_play_pause_icon, play_pause_icon)
 
 function set_widgets(s)
     -- Prompt box
@@ -272,13 +296,16 @@ function set_widgets(s)
             -- Music
             prev_icon,
             spr,
-            play_icon,
-            spr,
-            pause_icon,
+            play_pause_icon,
             spr,
             stop_icon,
             spr,
             next_icon,
+            spr,
+            widget_display_left,
+            spotify_widget,
+            widget_display_right,
+            -- Separator
             spr,
             spr4px,
         },
@@ -287,40 +314,50 @@ function set_widgets(s)
             layout = wibox.layout.fixed.horizontal,
             -- Task list
             s.mytasklist,
+            -- Separator
             spr,
+            spr4px,
         },
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             -- Prompt box
-            spr5px,
             s.mypromptbox,
-            spr5px,
+            -- Separator
+            spr,
+            spr4px,
+            spr,
             -- System tray
             wibox.widget.systray(),
-            -- Cpu
+            -- Separator
             spr,
+            spr4px,
+            spr,
+            -- Cpu
             cpu_icon,
             widget_display_left,
             cpu_widget,
             widget_display_right,
-            spr5px,
-            -- Memory
+            spr4px,
+            -- Separator
             spr,
+            -- Memory
             mem_icon,
             widget_display_left,
             mem_widget,
             widget_display_right,
-            spr5px,
-            -- Ssd widget
+            spr4px,
+            -- Separator
             spr,
+            -- Ssd widget
             ssd_icon,
             widget_display_left,
             ssd_widget,
             widget_display_right,
-            spr5px,
-            -- Network
+            spr4px,
+            -- Separator
             spr,
+            -- Network
             netdl_icon,
             widget_display_left,
             netdl_widget,
@@ -328,15 +365,21 @@ function set_widgets(s)
             netup_widget,
             widget_display_right,
             netup_icon,
-            -- Clock
+            -- Separator
             spr,
+            spr4px,
+            spr,
+            -- Clock
             clock_icon,
             widget_display_left,
             clock_widget,
             widget_display_right,
-            spr5px,
-          -- Layout box
+            spr4px,
+            -- Separator
             spr,
+            spr4px,
+            spr,
+          -- Layout box
             s.mylayoutbox,
         },
     }

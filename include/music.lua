@@ -1,26 +1,26 @@
 -- {{{ Music definitions
 -- Spotify
 function spotify_next()
-    awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next")
+    awful.util.spawn("sp next")
 end
 
 function spotify_pause()
-    awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause")
+    awful.util.spawn("sp pause")
 end
 
 function spotify_play()
-    awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play")
+    awful.util.spawn("sp play")
 end
 
 function spotify_play_pause()
-    awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause")
+    awful.util.spawn("sp play-pause")
 end
 
 function spotify_previous()
-    awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous")
+    awful.util.spawn("sp previous")
 end
 
 function spotify_stop()
-    awful.util.spawn_with_shell("dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop")
+    awful.util.spawn("sp stop")
 end
 -- }}}

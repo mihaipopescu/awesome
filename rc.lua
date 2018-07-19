@@ -3,6 +3,7 @@ awful           = require("awful")
                   require("awful.autofocus")
 hotkeys_popup   = require("awful.hotkeys_popup").widget
                   require("awful.hotkeys_popup.keys")
+watch           = require("awful.widget.watch")
 beautiful       = require("beautiful")
 calendar        = require("calendar")
 freedesktop     = require("freedesktop")
@@ -45,7 +46,7 @@ menu            = require("include/menu")
 -- }}}
 
 -- {{{ Music
-                = require("include/music")
+                  require("include/music")
 -- }}}
 
 -- {{{ Widgets

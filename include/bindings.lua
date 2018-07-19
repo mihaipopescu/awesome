@@ -245,19 +245,19 @@ local globalkeys = gears.table.join(
     awful.key(
         { modkey },
         "s",
-        spotify_play_pause(),
+        function() spotify_play_pause() end,
         { description = "play / pause music", group = "awesome" }
     ),
     awful.key(
         { modkey },
         "d",
-        spotify_next(),
+        function() spotify_next() end,
         { description = "next song", group = "awesome" }
     ),
     awful.key(
         { modkey },
         "a",
-        spotify_previous(),
+        function() spotify_previous() end,
         { description = "previous song", group = "awesome" }
     ),
 
