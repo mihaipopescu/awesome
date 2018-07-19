@@ -187,6 +187,9 @@ local netup_widget = wibox.container.background(netup)
 netup_widget.bgimage=beautiful.widget_display
 
 -- Music widget
+local current_song = "Spotify"
+local current_song_color = beautiful.fg_focus
+local current_song_state = 0
 local next_icon = wibox.widget.imagebox(beautiful.mpd_nex)
 local play_pause_icon = wibox.widget.imagebox(beautiful.mpd_play)
 local prev_icon = wibox.widget.imagebox(beautiful.mpd_prev)
@@ -203,18 +206,27 @@ stop_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify_stop(
 local function update_play_pause_icon(widget, stdout, _, _, _)
     stdout = string.gsub(stdout, "\n", "")
     if (stdout == "Playing") then
+        current_song_state = 1
         widget.image = beautiful.mpd_pause
     else
+        current_song_state = 0
         widget.image = beautiful.mpd_play
     end
 end
 
 local function update_spotify_text(widget, stdout, _, _, _)
     if string.find(stdout, "Error: Spotify is not running.") ~= nil then
-        widget:set_markup("<span foreground=" .. "'"..beautiful.fg_urgent .. "'" .. ">Spotify</span>")
+        current_song = "Spotify"
+        current_song_color = beautiful.fg_urgent
     else
-        widget:set_markup("<span foreground=" .. "'"..beautiful.fg_focus .. "'" .. ">" .. stdout .. "</span>")
+        current_song = stdout
+        if (current_song_state == 1) then
+            current_song_color = beautiful.fg_focus
+        else
+            current_song_color = beautiful.fg_normal
+        end
     end
+    widget:set_markup("<span foreground=" .. "'"..current_song_color .. "'" .. ">" .. current_song .. "</span>")
 end
 
 play_pause_icon:connect_signal(
