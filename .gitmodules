@@ -5,3 +5,7 @@
 [submodule "calendar"]
     path = calendar
     url = https://github.com/deficient/calendar
+
+[submodule "volume-control"]
+    path = volume-control
+    url = https://github.com/deficient/volume-control

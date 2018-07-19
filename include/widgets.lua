@@ -186,7 +186,7 @@ netdl_widget.bgimage=beautiful.widget_display
 local netup_widget = wibox.container.background(netup)
 netup_widget.bgimage=beautiful.widget_display
 
--- Music
+-- Music widget
 local next_icon = wibox.widget.imagebox(beautiful.mpd_nex)
 local play_pause_icon = wibox.widget.imagebox(beautiful.mpd_play)
 local prev_icon = wibox.widget.imagebox(beautiful.mpd_prev)
@@ -231,6 +231,19 @@ play_pause_icon:connect_signal(
 watch("sp current-oneline", 1, update_spotify_text, spotify_text)
 watch("sp status", 1, update_play_pause_icon, play_pause_icon)
 
+-- Volume widget
+volumecfg = volume_control({
+    step    = "2%",
+    lclick  = "",
+    mclick  = "",
+    rclick  = terminal .. " alsamixer",
+    tooltip = true
+})
+
+local volume_icon = wibox.widget.imagebox(beautiful.widget_volume)
+local volume_widget = wibox.container.background(volumecfg.widget)
+volume_widget.bgimage=beautiful.widget_display
+
 function set_widgets(s)
     -- Prompt box
     s.mypromptbox =
@@ -269,26 +282,24 @@ function set_widgets(s)
     )
 
     -- Tag list
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    s.tag_list = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
     -- Task list
-    s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
+    s.task_list = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
 
     -- Wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 22, bg = beautiful.panel, fg = beautiful.fg_normal })
-    s.mywibox:setup {
+    s.top_wibox = awful.wibar({ position = "top", screen = s, height = 22, bg = beautiful.panel, fg = beautiful.fg_normal })
+    s.top_wibox:setup {
         layout = wibox.layout.align.horizontal,
         {
             -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            -- Menu
-            menu,
             -- Separator
             spr,
             spr4px,
             spr,
             -- Tag list
-            s.mytaglist,
+            s.tag_list,
             -- Separator
             spr,
             spr4px,
@@ -308,27 +319,30 @@ function set_widgets(s)
             -- Separator
             spr,
             spr4px,
+            spr,
+            -- Volume
+            volume_icon,
+            widget_display_left,
+            volume_widget,
+            widget_display_right,
+            -- Separator
+            spr,
+            spr4px,
+            spr,
         },
         {
             -- Middle widget
             layout = wibox.layout.fixed.horizontal,
-            -- Task list
-            s.mytasklist,
-            -- Separator
-            spr,
-            spr4px,
         },
         {
             -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            -- Prompt box
-            s.mypromptbox,
             -- Separator
             spr,
             spr4px,
             spr,
-            -- System tray
-            wibox.widget.systray(),
+            -- Prompt box
+            s.mypromptbox,
             -- Separator
             spr,
             spr4px,
@@ -381,6 +395,39 @@ function set_widgets(s)
             spr,
           -- Layout box
             s.mylayoutbox,
+        },
+    }
+
+    s.bottom_wibox = awful.wibar({ position = "bottom", screen = s, height = 22, bg = beautiful.panel, fg = beautiful.fg_normal })
+    s.bottom_wibox:setup {
+        layout = wibox.layout.align.horizontal,
+        {
+            -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            -- Menu
+            menu,
+            -- Separator
+            spr,
+            spr4px,
+        },
+        {
+            -- Middle widget
+            layout = wibox.layout.fixed.horizontal,
+            -- Task list
+            s.task_list,
+        },
+        {
+            -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            -- Separator
+            spr,
+            spr4px,
+            spr,
+            -- System tray
+            wibox.widget.systray(),
+            -- Separator
+            spr,
+            spr4px,
         },
     }
 end

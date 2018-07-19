@@ -59,14 +59,14 @@ theme.titlebar_bg_normal = "#3F3F3F"
 -- }}}
 
 -- {{{ Tasklist |
-theme.tasklist_font                 = "sans 8"
-theme.tasklist_disable_icon         = true
+theme.tasklist_font                 = theme.font
+theme.tasklist_disable_icon         = false
 theme.tasklist_bg_normal            = "png:" .. themes_path .. "zenburn/panel/tasklist/normal.png"
 theme.tasklist_bg_focus             = "png:" .. themes_path .. "zenburn/panel/tasklist/focus.png"
 theme.tasklist_bg_urgent            = "png:" .. themes_path .. "zenburn/panel/tasklist/urgent.png"
-theme.tasklist_fg_focus             = "#DDDDDD"
-theme.tasklist_fg_urgent            = "#EEEEEE"
-theme.tasklist_fg_normal            = "#AAAAAA"
+theme.tasklist_fg_focus             = theme.fg_focus
+theme.tasklist_fg_urgent            = theme.fg_urgent
+theme.tasklist_fg_normal            = theme.fg_normal
 theme.tasklist_floating             = ""
 theme.tasklist_sticky               = ""
 theme.tasklist_ontop                = ""
@@ -104,6 +104,7 @@ theme.widget_mem            = themes_path .. "zenburn/panel/widgets/widget_mem.p
 theme.widget_netdl          = themes_path .. "zenburn/panel/widgets/widget_netdl.png"
 theme.widget_netul          = themes_path .. "zenburn/panel/widgets/widget_netul.png"
 theme.widget_ssd            = themes_path .. "zenburn/panel/widgets/widget_fs.png"
+theme.widget_volume         = themes_path .. "zenburn/panel/widgets/widget_volume.png"
 -- }}}
 
 -- {{{ Mouse finder
