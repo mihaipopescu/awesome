@@ -6,4 +6,5 @@ awful.spawn("slack")
 awful.spawn("skypeforlinux")
 awful.spawn("xterm")
 awful.spawn("xterm")
+awful.spawn("xterm")
 -- }}}

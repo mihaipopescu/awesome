@@ -244,16 +244,42 @@ watch("sp current-oneline", 1, update_spotify_text, spotify_text)
 watch("sp status", 1, update_play_pause_icon, play_pause_icon)
 
 -- Volume widget
-volumecfg = volume_control({
-    step    = "2%",
-    lclick  = "",
-    mclick  = "",
-    rclick  = terminal .. " alsamixer",
-    tooltip = true
+local volume_icon = wibox.widget.imagebox(beautiful.widget_volume)
+local volume = lain.widget.alsa({
+    settings = function()
+        widget:set_markup(" " .. volume_now.level .. "%" .. (volume_now.status == "off" and "[M]" or "") .. " ")
+    end
 })
 
-local volume_icon = wibox.widget.imagebox(beautiful.widget_volume)
-local volume_widget = wibox.container.background(volumecfg.widget)
+volume.widget:buttons(awful.util.table.join(
+    awful.button(
+        {}, 
+        3, 
+        function()
+            awful.spawn(string.format("%s -e alsamixer", terminal))
+        end
+    ),
+
+    awful.button(
+        {}, 
+        4, 
+        function()
+            awful.spawn(string.format("%s set %s 2%%+", volume.cmd, volume.channel))
+            volume.update()
+        end
+    ),
+
+    awful.button(
+        {}, 
+        5, 
+        function()
+            awful.spawn(string.format("%s set %s 2%%-", volume.cmd, volume.channel))
+            volume.update()
+        end
+    )
+))
+
+local volume_widget = wibox.container.background(volume.widget)
 volume_widget.bgimage=beautiful.widget_display
 
 function set_widgets(s)

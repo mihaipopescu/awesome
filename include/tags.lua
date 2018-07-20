@@ -62,9 +62,9 @@ return
 
         settings = 
         {
-            { name = "terminal",    layout = layouts.LAYOUT_TILE_TOP    },
-            { name = "sublime",     layout = layouts.LAYOUT_TILE_TOP    },
-            { name = "extra",       layout = layouts.LAYOUT_FLOATING    }
+            { name = "terminal",    layout = layouts.LAYOUT_CENTERWORK_HORIZONTAL   },
+            { name = "sublime",     layout = layouts.LAYOUT_TILE_TOP                },
+            { name = "extra",       layout = layouts.LAYOUT_FLOATING                }
         }
     }
 }

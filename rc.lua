@@ -11,7 +11,6 @@ gears           = require("gears")
 lain            = require("lain")
 menubar         = require("menubar")
 naughty         = require("naughty")
-volume_control  = require("volume-control")
 wibox           = require("wibox")
 
 -- {{{ Themes
