@@ -187,14 +187,13 @@ local netup_widget = wibox.container.background(netup)
 netup_widget.bgimage=beautiful.widget_display
 
 -- Music widget
-local current_song = "Spotify"
-local current_song_color = beautiful.fg_focus
-local current_song_state = 0
 local next_icon = wibox.widget.imagebox(beautiful.mpd_nex)
 local play_pause_icon = wibox.widget.imagebox(beautiful.mpd_play)
 local prev_icon = wibox.widget.imagebox(beautiful.mpd_prev)
 local stop_icon = wibox.widget.imagebox(beautiful.mpd_stop)
 local spotify_text = wibox.widget.textbox()
+spotify_text.align = "center"
+spotify_text.forced_width = 256
 local spotify_widget = wibox.container.background(spotify_text)
 spotify_widget.bgimage=beautiful.widget_display
 
@@ -203,45 +202,60 @@ play_pause_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify
 prev_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify_previous() end)))
 stop_icon:buttons(gears.table.join(awful.button({ }, 1, function() spotify_stop() end)))
 
-local function update_play_pause_icon(widget, stdout, _, _, _)
-    stdout = string.gsub(stdout, "\n", "")
-    if (stdout == "Playing") then
-        current_song_state = 1
-        widget.image = beautiful.mpd_pause
-    else
-        current_song_state = 0
-        widget.image = beautiful.mpd_play
-    end
-end
-
-local function update_spotify_text(widget, stdout, _, _, _)
-    if string.find(stdout, "Error: Spotify is not running.") ~= nil then
-        current_song = "Spotify"
-        current_song_color = beautiful.fg_urgent
-    else
-        current_song = stdout
-        if (current_song_state == 1) then
-            current_song_color = beautiful.fg_focus
-        else
-            current_song_color = beautiful.fg_normal
-        end
-    end
-    widget:set_markup("<span foreground=" .. "'"..current_song_color .. "'" .. ">" .. current_song .. "</span>")
-end
-
 play_pause_icon:connect_signal(
     "button::press",
     function(x, y, button, mods, find_widgets_result)
         awful.spawn.easy_async("sp status", 
             function(stdout, stderr, exitreason, exitcode)
-                update_play_pause_icon(play_pause_icon, stdout, stderr, exitreason, exitcode)
+                set_play_pause_icon(play_pause_icon, stdout)
             end
         )
     end
 )
 
-watch("sp current-oneline", 1, update_spotify_text, spotify_text)
-watch("sp status", 1, update_play_pause_icon, play_pause_icon)
+spotify_text:buttons(awful.util.table.join(
+    awful.button(
+        {}, 
+        4, 
+        function()
+            if (spotify_song_state == 1) then
+                spotify_song_index = spotify_song_index + 1
+                if (spotify_song_index >= spotify_song_size) then
+                    spotify_song_index = 1
+                end
+                set_spotify_text(spotify_text, spotify_song)
+            end
+        end
+    ),
+
+    awful.button(
+        {}, 
+        5, 
+        function()
+            if (spotify_song_state == 1) then
+                spotify_song_index = spotify_song_index - 1
+                if (spotify_song_index <= 0) then
+                    spotify_song_index = spotify_song_size - 1
+                end
+                set_spotify_text(spotify_text, spotify_song)
+            end
+        end
+    )
+))
+
+watch("sp current-oneline", 1, 
+    function (widget, stdout, _, _, _) 
+        update_spotify_text(widget, stdout) 
+    end, 
+    spotify_text
+)
+
+watch("sp status", 1, 
+    function (widget, stdout, _, _, _) 
+        set_play_pause_icon(widget, stdout) 
+    end, 
+    play_pause_icon
+)
 
 -- Volume widget
 local volume_icon = wibox.widget.imagebox(beautiful.widget_volume)
@@ -250,6 +264,8 @@ local volume = lain.widget.alsa({
         widget:set_markup(" " .. volume_now.level .. "%" .. (volume_now.status == "off" and "[M]" or "") .. " ")
     end
 })
+local volume_widget = wibox.container.background(volume.widget)
+volume_widget.bgimage=beautiful.widget_display
 
 volume.widget:buttons(awful.util.table.join(
     awful.button(
@@ -278,9 +294,6 @@ volume.widget:buttons(awful.util.table.join(
         end
     )
 ))
-
-local volume_widget = wibox.container.background(volume.widget)
-volume_widget.bgimage=beautiful.widget_display
 
 function set_widgets(s)
     -- Prompt box
@@ -343,6 +356,12 @@ function set_widgets(s)
             spr4px,
             spr,
             -- Music
+            spr4px,
+            widget_display_left,
+            spotify_widget,
+            widget_display_right,
+            spr4px,
+            spr,
             prev_icon,
             spr,
             play_pause_icon,
@@ -350,19 +369,17 @@ function set_widgets(s)
             stop_icon,
             spr,
             next_icon,
-            spr,
-            widget_display_left,
-            spotify_widget,
-            widget_display_right,
             -- Separator
             spr,
             spr4px,
             spr,
             -- Volume
+            spr4px,
             volume_icon,
             widget_display_left,
             volume_widget,
             widget_display_right,
+            spr4px,
             -- Separator
             spr,
             spr4px,
