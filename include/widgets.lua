@@ -4,6 +4,7 @@ quake = lain.util.quake(
     {
         app = terminal,
         followtag = true,
+        height = 0.5,
         onlyone = true
     }
 )
@@ -161,6 +162,7 @@ mem_widget.bgimage=beautiful.widget_display
 -- Ssd widget
 local ssd_icon = wibox.widget.imagebox(beautiful.widget_ssd)
 local ssd = lain.widget.fs({
+    followtag = true,
     settings = function()
         widget:set_markup(string.format(" %d%% ", fs_now["/home"].percentage))
     end
@@ -174,11 +176,9 @@ local netup_icon = wibox.widget.imagebox(beautiful.widget_netul)
 local netdl = wibox.widget.textbox()
 local netup = wibox.widget.textbox()
 local net = lain.widget.net({
-    iface = "enp2s0",
-    units = 1024^2,
     settings = function()
-        netdl:set_markup(string.format(" %.1f Mb ", net_now.received))
-        netup:set_markup(string.format(" %.1f Mb ", net_now.sent))
+        netdl:set_markup(string.format(" %.1f Kb ", net_now.received))
+        netup:set_markup(string.format(" %.1f Kb ", net_now.sent))
     end
 })
 local netdl_widget = wibox.container.background(netdl)
@@ -280,7 +280,7 @@ volume.widget:buttons(awful.util.table.join(
         {}, 
         4, 
         function()
-            awful.spawn(string.format("%s set %s 2%%+", volume.cmd, volume.channel))
+            awful.spawn(string.format("%s set %s 1%%+", volume.cmd, volume.channel))
             volume.update()
         end
     ),
@@ -289,7 +289,7 @@ volume.widget:buttons(awful.util.table.join(
         {}, 
         5, 
         function()
-            awful.spawn(string.format("%s set %s 2%%-", volume.cmd, volume.channel))
+            awful.spawn(string.format("%s set %s 1%%-", volume.cmd, volume.channel))
             volume.update()
         end
     )

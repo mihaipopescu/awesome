@@ -229,8 +229,8 @@ local globalkeys = gears.table.join(
     awful.key(
         { modkey },
         "p",
-        function() menubar.show() end,
-        { description = "show the menubar", group = "launcher" }
+        function() awful.util.spawn("snipping") end,
+        { description = "snipping tool", group = "launcher" }
     ),
 
     -- Lock screen
