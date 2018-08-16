@@ -208,6 +208,17 @@ awful.rules.rules =
             screen = screens.SCREEN_RIGHT,
             tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_EXTRA].name
         }
+    },
+    {
+        rule =
+        {
+            class = "[Vv]irtual[Bb]ox"
+        },
+        properties =
+        {
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_EXTRA].name
+        }
     }
 }
 -- }}}
