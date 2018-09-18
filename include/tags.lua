@@ -22,14 +22,12 @@ return
     {
         TAG_VSCODE =        1,
         TAG_DEV =           2,
-        TAG_UNITY =         3,
-        TAG_EXTRA =         4,
+        TAG_EXTRA =         3,
 
         settings = 
         {
             { name = "vscode",      layout = layouts.LAYOUT_MAX         },
             { name = "dev",         layout = layouts.LAYOUT_MAX         },
-            { name = "unity",       layout = layouts.LAYOUT_FLOATING    },
             { name = "extra",       layout = layouts.LAYOUT_FLOATING    }
         }
     },
@@ -41,7 +39,8 @@ return
         TAG_SLACK =         3,
         TAG_SKYPE =         4,
         TAG_MUSIC =         5,
-        TAG_EXTRA =         6,
+        TAG_UNITY =         6,
+        TAG_EXTRA =         7,
 
         settings = 
         {
@@ -50,6 +49,7 @@ return
             { name = "slack",       layout = layouts.LAYOUT_TILE        },
             { name = "skype",       layout = layouts.LAYOUT_TILE        },
             { name = "music",       layout = layouts.LAYOUT_MAX         },
+            { name = "unity",       layout = layouts.LAYOUT_FLOATING    },
             { name = "extra",       layout = layouts.LAYOUT_FLOATING    }
         }
     },

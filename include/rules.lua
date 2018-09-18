@@ -114,8 +114,8 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_UNITY].name
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_UNITY].name
         }
     },
     {
@@ -126,8 +126,8 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_UNITY].name
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_UNITY].name
         }
     },
     {
@@ -138,8 +138,8 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_UNITY].name
+            screen = screens.SCREEN_RIGHT,
+            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_UNITY].name
         }
     },
     {
