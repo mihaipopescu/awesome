@@ -37,7 +37,7 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_LEFT,
-            tag = tags[screens.SCREEN_LEFT].settings[tags[screens.SCREEN_LEFT].TAG_TERMINAL].name
+            tag = tags.names[tags.TAG_TERMINAL]
         }
     },
     {
@@ -48,7 +48,7 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_LEFT,
-            tag = tags[screens.SCREEN_LEFT].settings[tags[screens.SCREEN_LEFT].TAG_SUBLIME].name
+            tag = tags.names[tags.TAG_SUBLIME]
         }
     },
     {
@@ -59,7 +59,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_VSCODE].name
+            tag = tags.names[tags.TAG_VSCODE],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -70,7 +72,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_VSCODE].name
+            tag = tags.names[tags.TAG_VSCODE],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -81,7 +85,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_DEV].name
+            tag = tags.names[tags.TAG_DEV],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -92,7 +98,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_DEV].name
+            tag = tags.names[tags.TAG_DEV],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -103,7 +111,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_DEV].name
+            tag = tags.names[tags.TAG_DEV],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -115,7 +125,7 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_UNITY].name
+            tag = tags.names[tags.TAG_UNITY]
         }
     },
     {
@@ -127,7 +137,7 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_UNITY].name
+            tag = tags.names[tags.TAG_UNITY]
         }
     },
     {
@@ -139,7 +149,7 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_UNITY].name
+            tag = tags.names[tags.TAG_UNITY]
         }
     },
     {
@@ -150,7 +160,7 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_CENTRE,
-            tag = tags[screens.SCREEN_CENTRE].settings[tags[screens.SCREEN_CENTRE].TAG_EXTRA].name
+            tag = tags.names[tags.TAG_EXTRA]
         }
     },
     {
@@ -161,7 +171,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_WEB_UNITY].name
+            tag = tags.names[tags.TAG_WEB_UNITY],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -172,7 +184,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_SLACK].name
+            tag = tags.names[tags.TAG_SLACK],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -183,7 +197,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_SKYPE].name
+            tag = tags.names[tags.TAG_SKYPE],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -194,7 +210,9 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_MUSIC].name
+            tag = tags.names[tags.TAG_MUSIC],
+            maximized_vertical = true,
+            maximized_horizontal = true
         }
     },
     {
@@ -206,7 +224,7 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_EXTRA].name
+            tag = tags.names[tags.TAG_EXTRA]
         }
     },
     {
@@ -217,7 +235,7 @@ awful.rules.rules =
         properties =
         {
             screen = screens.SCREEN_RIGHT,
-            tag = tags[screens.SCREEN_RIGHT].settings[tags[screens.SCREEN_RIGHT].TAG_EXTRA].name
+            tag = tags.names[tags.TAG_EXTRA]
         }
     }
 }
