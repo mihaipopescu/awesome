@@ -1,6 +1,6 @@
 -- {{{ Tags definitions
 function set_tags(s, tags)
-    if screens.SCREEN_MAX == screen:count() then
+    if screens.SCREEN_THREE == screen:count() then
         if tags[s.index] ~= nil then
             for i, settings in ipairs(tags[s.index]) do
                 awful.tag.add(
@@ -15,21 +15,24 @@ function set_tags(s, tags)
         else
             awful.tag({ "1", "2", "3" }, s,layouts.suits[layouts.LAYOUT_FLOATING])
         end
-    else
-        for i = 1, 9 do
-            if tags[s.index] ~= nil then
-                for i, settings in ipairs(tags[s.index]) do
+    elseif screens.SCREEN_ONE == screen:count() then
+        is_selected = false
+        for _, i in ipairs({screens.SCREEN_THREE , screens.SCREEN_ONE, screens.SCREEN_TWO}) do
+            if tags[i] ~= nil then
+                for j, settings in ipairs(tags[i]) do
                     awful.tag.add(
                         settings.name, 
                         {
                             layout = layouts.suits[settings.layout],
                             screen = s,
-                            selected = (i == 1)
+                            selected = (i == screens.SCREEN_THREE) and (j == 1)
                         }
                     )
                 end
             end
         end
+    else
+        awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s,layouts.suits[layouts.LAYOUT_FLOATING])
     end
 end
 
@@ -62,14 +65,14 @@ return
         "extra"
     },
 
-    [screens.SCREEN_CENTRE] = 
+    [screens.SCREEN_ONE] = 
     {
         { name = "vscode",      layout = layouts.LAYOUT_MAX         },
         { name = "dev",         layout = layouts.LAYOUT_MAX         },
         { name = "extra",       layout = layouts.LAYOUT_FLOATING    }
     },
 
-    [screens.SCREEN_RIGHT] = 
+    [screens.SCREEN_TWO] = 
     {
         { name = "web [unity]", layout = layouts.LAYOUT_MAX         },
         { name = "web [home]",  layout = layouts.LAYOUT_MAX         },
@@ -80,7 +83,7 @@ return
         { name = "extra",       layout = layouts.LAYOUT_FLOATING    }
     },
 
-    [screens.SCREEN_LEFT] = 
+    [screens.SCREEN_THREE] = 
     {
         { name = "terminal",    layout = layouts.LAYOUT_CENTERWORK_HORIZONTAL   },
         { name = "sublime",     layout = layouts.LAYOUT_TILE_TOP                },
