@@ -1,18 +1,35 @@
 -- {{{ Tags definitions
 function set_tags(s, tags)
-    if tags[s.index] ~= nil then
-        for i, settings in ipairs(tags[s.index]) do
-            awful.tag.add(
-                settings.name, 
-                {
-                    layout = layouts.suits[settings.layout],
-                    screen = s,
-                    selected = (i == 1)
-                }
-            )
+    if screens.SCREEN_MAX == screen:count() then
+        if tags[s.index] ~= nil then
+            for i, settings in ipairs(tags[s.index]) do
+                awful.tag.add(
+                    settings.name, 
+                    {
+                        layout = layouts.suits[settings.layout],
+                        screen = s,
+                        selected = (i == 1)
+                    }
+                )
+            end
+        else
+            awful.tag({ "1", "2", "3" }, s,layouts.suits[layouts.LAYOUT_FLOATING])
         end
     else
-        awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s,layouts.suits[layouts.LAYOUT_FLOATING])
+        for i = 1, 9 do
+            if tags[s.index] ~= nil then
+                for i, settings in ipairs(tags[s.index]) do
+                    awful.tag.add(
+                        settings.name, 
+                        {
+                            layout = layouts.suits[settings.layout],
+                            screen = s,
+                            selected = (i == 1)
+                        }
+                    )
+                end
+            end
+        end
     end
 end
 
