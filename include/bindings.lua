@@ -39,14 +39,14 @@ local globalkeys = gears.table.join(
     awful.key(
         { modkey },
         "j",
-        function () awful.client.focus.byidx(-1) end,
+        function () awful.client.focus.byidx( 1) end,
         { description = "focus next by index", group = "client" }
     ),
 
     awful.key(
         { modkey },
         "k",
-        function () awful.client.focus.byidx( 1) end,
+        function () awful.client.focus.byidx(-1) end,
         { description = "focus previous by index", group = "client" }
     ),
 
@@ -59,30 +59,30 @@ local globalkeys = gears.table.join(
 
     -- Layout manipulation
     awful.key(
-        { modkey, "Shift" },
+        { modkey, "Control" },
         "j",
         function () awful.client.swap.byidx( 1) end,
         { description = "swap with next client by index", group = "client" }
     ),
 
     awful.key(
-        { modkey, "Shift" },
+        { modkey, "Control" },
         "k",
         function () awful.client.swap.byidx(-1) end,
         { description = "swap with previous client by index", group = "client" }
     ),
 
     awful.key(
-        { modkey, "Control" },
+        { modkey, "Shift" },
         "j",
-        function () awful.screen.focus_relative(-1) end,
+        function () awful.screen.focus_relative( 1) end,
         { description = "focus the next screen", group = "screen" }
     ),
 
     awful.key(
-        { modkey, "Control" },
+        { modkey, "Shift" },
         "k",
-        function () awful.screen.focus_relative( 1) end,
+        function () awful.screen.focus_relative(-1) end,
         { description = "focus the previous screen", group = "screen" }
     ),
 

@@ -1,5 +1,5 @@
 -- {{{ Notifications theme 
-naughty.config.defaults.screen              = screen.primary.index
+naughty.config.defaults.screen              = awful.screen.preferred
 naughty.config.presets.critical.opacity     = 0.8
 naughty.config.presets.normal.bg            = beautiful.notify_bg
 naughty.config.presets.normal.border_color  = beautiful.notify_border
