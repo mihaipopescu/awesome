@@ -36,7 +36,7 @@ awful.rules.rules =
         },
         properties =
         {
-            screen =  screens.SCREEN_THREE,
+            screen = screens.SCREEN_THREE <= screen.count() and screens.SCREEN_THREE or awful.screen.preferred,
             tag = tags.names[tags.TAG_TERMINAL]
         }
     },
@@ -47,7 +47,7 @@ awful.rules.rules =
         },
         properties =
         {
-            screen =  screens.SCREEN_THREE,
+            screen = screens.SCREEN_THREE <= screen.count() and screens.SCREEN_THREE or awful.screen.preferred,
             tag = tags.names[tags.TAG_SUBLIME]
         }
     },
@@ -60,7 +60,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_ONE,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
             tag = tags.names[tags.TAG_VSCODE]
         }
     },
@@ -73,7 +73,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_ONE,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
             tag = tags.names[tags.TAG_VSCODE]
         }
     },
@@ -86,7 +86,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_ONE,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
             tag = tags.names[tags.TAG_DEV]
         }
     },
@@ -99,7 +99,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_ONE,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
             tag = tags.names[tags.TAG_DEV]
         }
     },
@@ -112,7 +112,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_ONE,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
             tag = tags.names[tags.TAG_DEV]
         }
     },
@@ -124,7 +124,7 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_UNITY]
         }
     },
@@ -136,7 +136,7 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_UNITY]
         }
     },
@@ -148,7 +148,7 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_UNITY]
         }
     },
@@ -159,7 +159,7 @@ awful.rules.rules =
         },
         properties =
         {
-            screen =  screens.SCREEN_ONE,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
             tag = tags.names[tags.TAG_EXTRA]
         }
     },
@@ -172,7 +172,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_WEB_UNITY]
         }
     },
@@ -185,7 +185,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_SLACK]
         }
     },
@@ -198,7 +198,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_SKYPE]
         }
     },
@@ -211,7 +211,7 @@ awful.rules.rules =
         {
             maximized_horizontal = true,
             maximized_vertical = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_MUSIC]
         }
     },
@@ -223,7 +223,7 @@ awful.rules.rules =
         properties =
         {
             floating = true,
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_EXTRA]
         }
     },
@@ -234,7 +234,7 @@ awful.rules.rules =
         },
         properties =
         {
-            screen =  screens.SCREEN_TWO,
+            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
             tag = tags.names[tags.TAG_EXTRA]
         }
     }
