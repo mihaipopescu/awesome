@@ -89,7 +89,7 @@ function spotify_play_pause()
 end
 
 function spotify_previous()
-    awful.util.spawn("sp previous")
+    awful.util.spawn("sp prev")
 end
 
 function spotify_stop()

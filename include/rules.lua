@@ -93,6 +93,19 @@ awful.rules.rules =
     {
         rule =
         {
+            class = "[Pp]4v"
+        },
+        properties =
+        {
+            maximized_horizontal = true,
+            maximized_vertical = true,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
+            tag = tags.names[tags.TAG_DEV]
+        }
+    },
+    {
+        rule =
+        {
             class = "[Tt]hg"
         },
         properties =
