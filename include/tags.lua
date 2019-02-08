@@ -1,6 +1,6 @@
 -- {{{ Tags definitions
 function set_tags(s, tags)
-    if screens.SCREEN_THREE == screen:count() then
+    if screens.MAX_SCREEN == screen:count() then
         if tags[s.index] ~= nil then
             for i, settings in ipairs(tags[s.index]) do
                 awful.tag.add(
@@ -15,9 +15,9 @@ function set_tags(s, tags)
         else
             awful.tag({ "1", "2", "3" }, s,layouts.suits[layouts.LAYOUT_FLOATING])
         end
-    elseif screens.SCREEN_ONE == screen:count() then
+    elseif screens.MAX_SCREEN == screen:count() then
         is_selected = false
-        for _, i in ipairs({screens.SCREEN_THREE , screens.SCREEN_ONE, screens.SCREEN_TWO}) do
+        for _, i in ipairs({screens.SCREEN_ONE , screens.SCREEN_THREE, screens.SCREEN_TWO}) do
             if tags[i] ~= nil then
                 for j, settings in ipairs(tags[i]) do
                     awful.tag.add(
@@ -25,7 +25,7 @@ function set_tags(s, tags)
                         {
                             layout = layouts.suits[settings.layout],
                             screen = s,
-                            selected = (i == screens.SCREEN_THREE) and (j == 1)
+                            selected = (i == screens.SCREEN_ONE) and (j == 1)
                         }
                     )
                 end
