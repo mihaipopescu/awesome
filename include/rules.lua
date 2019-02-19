@@ -18,6 +18,7 @@ awful.rules.rules =
             placement       = awful.placement.no_overlap+awful.placement.no_offscreen
         }
     },
+
     {
         rule_any =
         {
@@ -29,6 +30,7 @@ awful.rules.rules =
             titlebars_enabled = true
         }
     },
+
     {
         rule =
         {
@@ -40,6 +42,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_TERMINAL]
         }
     },
+
     {
         rule =
         {
@@ -51,6 +54,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_SUBLIME]
         }
     },
+
     {
         rule =
         {
@@ -64,6 +68,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_VSCODE]
         }
     },
+
     {
         rule =
         {
@@ -77,6 +82,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_VSCODE]
         }
     },
+
     {
         rule =
         {
@@ -90,6 +96,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_DEV]
         }
     },
+
     {
         rule =
         {
@@ -103,6 +110,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_DEV]
         }
     },
+
     {
         rule =
         {
@@ -116,6 +124,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_DEV]
         }
     },
+
     {
         rule =
         {
@@ -129,6 +138,21 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_DEV]
         }
     },
+
+    {
+        rule =
+        {
+            class = "[Cc]aja"
+        },
+        properties =
+        {
+            floating = true,
+            screen = screens.SCREEN_ONE <= screen.count() and screens.SCREEN_ONE or awful.screen.preferred,
+            tag = tags.names[tags.TAG_EXTRA],
+            titlebars_enabled = true
+        }
+    },
+
     {
         rule =
         {
@@ -138,9 +162,11 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
-            tag = tags.names[tags.TAG_UNITY]
+            tag = tags.names[tags.TAG_UNITY],
+            titlebars_enabled = true
         }
     },
+
     {
         rule =
         {
@@ -150,9 +176,11 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
-            tag = tags.names[tags.TAG_UNITY]
+            tag = tags.names[tags.TAG_UNITY],
+            titlebars_enabled = true
         }
     },
+
     {
         rule =
         {
@@ -162,9 +190,11 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
-            tag = tags.names[tags.TAG_UNITY]
+            tag = tags.names[tags.TAG_UNITY],
+            titlebars_enabled = true
         }
     },
+
     {
         rule =
         {
@@ -176,6 +206,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_EXTRA]
         }
     },
+
     {
         rule =
         {
@@ -189,6 +220,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_WEB_UNITY]
         }
     },
+
     {
         rule =
         {
@@ -202,6 +234,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_SLACK]
         }
     },
+
     {
         rule =
         {
@@ -215,6 +248,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_SKYPE]
         }
     },
+
     {
         rule =
         {
@@ -228,6 +262,7 @@ awful.rules.rules =
             tag = tags.names[tags.TAG_MUSIC]
         }
     },
+
     {
         rule =
         {
@@ -237,9 +272,11 @@ awful.rules.rules =
         {
             floating = true,
             screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
-            tag = tags.names[tags.TAG_EXTRA]
+            tag = tags.names[tags.TAG_EXTRA],
+            titlebars_enabled = true
         }
     },
+    
     {
         rule =
         {

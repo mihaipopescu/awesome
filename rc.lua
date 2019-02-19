@@ -49,6 +49,10 @@ menu            = require("include/menu")
                   require("include/music")
 -- }}}
 
+-- {{{ Programs
+                  require("include/programs")
+-- }}}
+
 -- {{{ Widgets
                   require("include/widgets")
 -- }}}
@@ -63,8 +67,4 @@ menu            = require("include/menu")
 
 -- {{{ Signals
                   require("include/signals")
--- }}}
-
--- {{{ Autostart
-                  require("include/autostart")
 -- }}}
