@@ -259,20 +259,52 @@ watch("sp status", 1,
 
 -- Volume widget
 local volume_icon = wibox.widget.imagebox(beautiful.widget_volume)
-local volume = lain.widget.alsa({
-    settings = function()
-        widget:set_markup(" " .. volume_now.level .. "%" .. (volume_now.status == "off" and "[M]" or "") .. " ")
+-- local volume = lain.widget.alsa({
+--     settings = function()
+--         widget:set_markup(" " .. volume_now.level .. "%" .. (volume_now.status == "off" and "[M]" or "") .. " ")
+-- })
+local volume = lain.widget.pulse{
+    settings = 
+    function()
+        local volume_color = beautiful.fg_focus
+        if volume_now.device == "CC:98:8B:7F:F9:CE" then
+            volume_color = beautiful.fg_focus
+        else
+            volume_color = beautiful.fg_urgent
+        end
+
+        widget:set_markup(lain.util.markup(volume_color, " " .. volume_now.left .. "%" .. (volume_now.muted == "yes" and " [M]" or "") .. " "))
     end
-})
+}
 local volume_widget = wibox.container.background(volume.widget)
 volume_widget.bgimage=beautiful.widget_display
 
 volume.widget:buttons(awful.util.table.join(
+
+    awful.button(
+        {}, 
+        1, 
+        function()
+            -- awful.spawn(string.format("%s -e alsamixer", terminal))
+            awful.spawn("pavucontrol")
+        end
+    ),
+
+    awful.button(
+        {}, 
+        2, 
+        function()
+            os.execute(string.format("pactl set-sink-mute %d toggle", volume.device))
+            volume.update()
+        end
+    ),
+
     awful.button(
         {}, 
         3, 
         function()
-            awful.spawn(string.format("%s -e alsamixer", terminal))
+            os.execute(string.format("pactl set-sink-volume %d 100%%", volume.device))
+            volume.update()
         end
     ),
 
@@ -280,7 +312,8 @@ volume.widget:buttons(awful.util.table.join(
         {}, 
         4, 
         function()
-            awful.spawn(string.format("%s set %s 1%%+", volume.cmd, volume.channel))
+            -- awful.spawn(string.format("%s set %s 1%%+", volume.cmd, volume.channel))
+            os.execute(string.format("pactl set-sink-volume %d +1%%", volume.device))
             volume.update()
         end
     ),
@@ -289,7 +322,8 @@ volume.widget:buttons(awful.util.table.join(
         {}, 
         5, 
         function()
-            awful.spawn(string.format("%s set %s 1%%-", volume.cmd, volume.channel))
+            -- awful.spawn(string.format("%s set %s 1%%-", volume.cmd, volume.channel))
+            os.execute(string.format("pactl set-sink-volume %d -1%%", volume.device))
             volume.update()
         end
     )

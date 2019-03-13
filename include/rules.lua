@@ -238,20 +238,6 @@ awful.rules.rules =
     {
         rule =
         {
-            class = "[Ss]kype"
-        },
-        properties =
-        {
-            maximized_horizontal = true,
-            maximized_vertical = true,
-            screen = screens.SCREEN_TWO <= screen.count() and screens.SCREEN_TWO or awful.screen.preferred,
-            tag = tags.names[tags.TAG_SKYPE]
-        }
-    },
-
-    {
-        rule =
-        {
             class = "[Ss]potify"
         },
         properties =

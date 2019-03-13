@@ -46,9 +46,8 @@ return
     TAG_WEB_UNITY =     6,
     TAG_WEB_HOME =      7,
     TAG_SLACK =         8,
-    TAG_SKYPE =         9,
-    TAG_MUSIC =         10,
-    TAG_EXTRA =         11,
+    TAG_MUSIC =         9,
+    TAG_EXTRA =         10,
 
     names =
     {
@@ -60,7 +59,6 @@ return
         "web [unity]",
         "web [home]",
         "slack",
-        "skype",
         "music",
         "extra"
     },
@@ -77,7 +75,6 @@ return
         { name = "web [unity]", layout = layouts.LAYOUT_MAX         },
         { name = "web [home]",  layout = layouts.LAYOUT_MAX         },
         { name = "slack",       layout = layouts.LAYOUT_TILE        },
-        { name = "skype",       layout = layouts.LAYOUT_TILE        },
         { name = "music",       layout = layouts.LAYOUT_MAX         },
         { name = "unity",       layout = layouts.LAYOUT_FLOATING    },
         { name = "extra",       layout = layouts.LAYOUT_FLOATING    }
