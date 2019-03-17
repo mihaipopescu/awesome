@@ -170,6 +170,17 @@ local ssd = lain.widget.fs({
 local ssd_widget = wibox.container.background(ssd.widget)
 ssd_widget.bgimage=beautiful.widget_display
 
+
+-- Bat widget
+local bat_icon = wibox.widget.imagebox(beautiful.widget_bat)
+local bat = lain.widget.bat({
+    settings = function()
+        widget:set_markup(string.format(" %d%% ", bat_now.perc))
+    end
+})
+local bat_widget = wibox.container.background(bat.widget)
+bat_widget.bgimage=beautiful.widget_display
+
 -- Network widget
 local netdl_icon = wibox.widget.imagebox(beautiful.widget_netdl)
 local netup_icon = wibox.widget.imagebox(beautiful.widget_netul)
@@ -456,6 +467,14 @@ function set_widgets(s)
             ssd_icon,
             widget_display_left,
             ssd_widget,
+            widget_display_right,
+            spr4px,
+            -- Separator
+            spr,
+            -- Battery
+            bat_icon,
+            widget_display_left,
+            bat_widget,
             widget_display_right,
             spr4px,
             -- Separator

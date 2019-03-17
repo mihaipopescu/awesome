@@ -105,6 +105,8 @@ theme.widget_netdl          = themes_path .. "zenburn/panel/widgets/widget_netdl
 theme.widget_netul          = themes_path .. "zenburn/panel/widgets/widget_netul.png"
 theme.widget_ssd            = themes_path .. "zenburn/panel/widgets/widget_fs.png"
 theme.widget_volume         = themes_path .. "zenburn/panel/widgets/widget_volume.png"
+theme.widget_bat            = themes_path .. "zenburn/panel/widgets/battery/battery.png"
+
 -- }}}
 
 -- {{{ Mouse finder
